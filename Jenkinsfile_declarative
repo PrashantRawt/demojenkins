@@ -10,6 +10,9 @@ pipeline {
 
                     print ("building the war package")
                     sh "mvn install"
+                    print ("stash the package")
+                    stash ( includes: "target/hello-world-web-app.war", name: "package")
+
                 }
             }
         }
