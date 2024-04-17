@@ -1,0 +1,17 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage ("build the package") {
+            steps {
+                node ("build-server") {
+                    print ("clone the git repo")
+                    checkout scm 
+
+                    print ("building the war package")
+                    sh "mvn install"
+                }
+            }
+        }
+    }
+}   
